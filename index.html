@@ -1,0 +1,484 @@
+<html>
+<head>
+<title>Web Flaneur</title>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="jquery.scrollTo-1.4.2-min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	var $canvas = $('#frame');
+	$canvas.find('img').unwrap();
+	var lastX=0;
+	var lastY=0;
+//	$('body').prepend('<input name="scalar"></input>');
+	$('#lucky').click(function() {
+        			var topVal = (Math.random()-.4)*1900;
+		        	var leftVal = (Math.random()-.4)*1400;
+		   			messyScroll(leftVal,topVal);
+        		});
+     $('#lucky').click();
+      $canvas.click(function(e){
+      	  	var topVal = e.pageY - (this.offsetTop + .5 * $canvas.height()) ;
+   			var leftVal =  e.pageX - (this.offsetLeft + .5 * $canvas.width());
+   			messyScroll(leftVal,topVal);
+   			
+   			
+   			
+      }); 	
+function messyScroll(x,y){
+			var scalar = (Math.random()*20)-3;
+			//var scalar=1;
+			//$('input[name="scalar"]').val(scalar);
+			x=x*scalar;
+			y=y*scalar;
+		//Don't let scroll escape $canvas
+		if( (lastX+x)<=$canvas.find('#map').width()  ) {
+			x = lastX + x;
+			}
+		else{
+			x = $canvas.find('#map').width();
+			}
+		
+		if(lastY+y<=$canvas.find('#map').height() ) {
+			y= lastY+y;
+			}
+		else{
+			y =$canvas.find('#map').height();
+			}
+		
+	   		$canvas.scrollTo( { top:y, left:x}, (scalar)*125 );
+		lastX= x
+		lastY= y
+}
+	
+     });   
+
+	
+
+</script>
+
+
+<style>
+	body {
+		font-family: Monaco, monospaced;
+		margin:0;
+		padding:0 0 0 5px;
+		position:fixed;
+		overflow:hidden;
+		width:100%;
+		height:100%;
+	}
+	div#header {
+		display:box;
+		position:fixed;
+		top:10px;
+		padding:5px;
+		opacity:.85;
+		background-color: #eeeeef;
+		box-shadow: 0px 5px 5px #888;
+		
+	}	
+	div#header h1 {
+		margin: 0px;
+		padding:0;
+		}
+	div#header h3 {
+		font-size: 10px;
+		}
+	#container {
+		width:100%;
+		margin:0 0 0 10px;
+		height:100%;
+		overflow: hidden;
+		box-shadow: 0px 5px 5px #888;
+
+	}
+	#frame {
+		position: static;
+		width: 100%;
+		height: 100%;
+		overflow: hidden;
+	}
+	#map {
+		width:5000px;
+		
+	}
+	#map img {
+		width: auto;
+		height: auto;
+		padding:100px;
+		}
+
+	.hbox {
+		width:100%;
+		color: #eeeeef;
+		border: 1px solid #000;
+	}
+	#lucky {
+		height: 25px;
+		width: auto;
+		font-weight: 700;
+		text-decoration:underline;
+		opacity: .9;
+		background-color: #eeeeef;
+		position: fixed;
+		bottom: 20px;
+		margin-left:5px;
+		padding: 10px;
+		cursor:pointer;
+		box-shadow: 0px 2px 5px #888;
+		-moz-box-shadow: 0px 2px 5px #888;
+	}
+	#lucky:hover {
+		background-color: #cccccd;
+		}
+	
+
+
+</style>
+
+</head>
+<body>
+<div id="header"><h1>Web Flaneur</h1>
+<h3>Click anywhere to begin your wander.</h3>
+</div>
+
+	<div id="container">
+		<div id="frame">
+			<div id="map">
+				<div class="hbox" id="animals">
+					<img keywords="animal" src="files/file_4f54b00497dc9.jpg">
+					<img keywords="animal" src="files/file_4f54aa25bd044.jpg">
+					<img keywords="animal" src="files/file_4f54acb791c74.jpg">
+					<img keywords="animal" src="files/file_4f54a4fdbbfe7.jpg">
+					<img keywords="animal" src="files/file_4f54a8c165f75.jpg">
+					<img keywords="animal" src="files/file_4f54a85cd675c.jpg">
+					<img keywords="animal" src="files/file_4f54ae6b73139.jpg">
+					<img keywords="animal" src="files/file_4f54a9c64d7f1.jpg">
+					<img keywords="animal" src="files/file_4f54a2318cc3f.jpg">
+					<img keywords="animal" src="files/file_4f54a33d7c0b8.jpg">
+					<img keywords="animal" src="files/file_4f54acec608cb.jpg">
+					<img keywords="animal" src="files/file_4f54a53d76433.jpg">
+				</div>
+				<div class="hbox" id="architecture">
+					<img keywords="architecture" src="files/file_4f54af9143f3f.jpg">
+					<img keywords="architecture" src="files/file_4f54b04a35516.jpg">
+					<img keywords="architecture" src="files/file_4f54a4ed191fa.jpg">
+					<img keywords="architecture" src="files/file_4f54a2432d0aa.jpg">
+					<img keywords="architecture" src="files/file_4f54ad4d73633.jpg">
+					<img keywords="architecture" src="files/file_4f54a638b8c59.jpg">
+					<img keywords="architecture" src="files/file_4f54ad61bc2a3.jpg">
+					<img keywords="architecture" src="files/file_4f54a9f9a073d.jpg">
+					<img keywords="architecture" src="files/file_4f54a202bcd71.jpg">
+					<img keywords="architecture" src="files/file_4f54ae378e57c.jpg">				
+				</div>
+				<div class="hbox" id="art">
+					<img keywords="art" src="files/file_4f54a9d71b3b6.jpg">
+					<img keywords="art" src="files/file_4f54a484c89da.jpg">
+					<img keywords="art" src="files/file_4f54a9fe788fc.jpg">
+					<img keywords="art" src="files/file_4f54ae7fd3974.jpg">
+					<img keywords="art" src="files/file_4f54ac2134b29.jpg">
+					<img keywords="art" src="files/file_4f54ab1a7dde0.jpg">
+					<img keywords="art" src="files/file_4f54af9dc3122.jpg">
+					<img keywords="art" src="files/14_4f54aa0659981.jpg">
+					<img keywords="art" src="files/file_4f54af877dea6.jpg">
+					<img keywords="art" src="files/file_4f54ad55d99e3.jpg">
+					<img keywords="art" src="files/file_4f54aa14cdac5.jpg">
+					<img keywords="art" src="files/file_4f54a6a8b6187.jpg">
+					<img keywords="art" src="files/file_4f54aa0da4a19.jpg">
+					<img keywords="art" src="files/file_4f54a5029e5a8.jpg">
+					<img keywords="art" src="files/file_4f54ad770a597.jpg">
+					<img keywords="art" src="files/file_4f54af168d120.jpg">
+					<img keywords="art" src="files/file_4f54af89cdbff.jpg">
+					<img keywords="art" src="files/file_4f54a650cf54e.jpg">
+					<img keywords="art" src="files/file_4f54aa040a181.jpg">
+					<img keywords="art" src="files/file_4f549f286df3d.jpg">
+					<img keywords="art" src="files/file_4f54aa1a3fccd.jpg">
+				</div>
+				<div class="hbox" id="colour">
+					<img keywords="colour" src="files/file_4f54aa22e37ee.jpg">
+					<img keywords="colour" src="files/file_4f54ae83a2d75.jpg">
+					<img keywords="colour" src="files/file_4f54aba7a604e.jpg">
+					<img keywords="colour" src="files/file_4f54ae61234ef.jpg">
+					<img keywords="colour" src="files/file_4f54aa187c01a.jpg">
+					<img keywords="colour" src="files/file_4f54af8f75cd4.jpg">
+					<img keywords="colour" src="files/file_4f54aa09c8904.jpg">
+					<img keywords="colour" src="files/file_4f54aa1ac4488.jpg">
+					<img keywords="colour" src="files/file_4f54aa1f999c5.jpg">
+					<img keywords="colour" src="files/14_4f54ac426f514.jpg">
+				<img keywords="colour" src="files/file_4f54a46e41217.jpg">
+				</div>
+				<div class="hbox" id="drawing">
+					<img keywords="drawing" src="files/file_4f54aa44e2f7d.jpg">
+					<img keywords="drawing" src="files/file_4f54aec1c2595.jpg">
+					<img keywords="drawing" src="files/file_4f54afe0c82da.jpg">
+					<img keywords="drawing" src="files/file_4f54a09de53c1.jpg">
+					<img keywords="drawing" src="files/file_4f549fff2d3ce.jpg">
+				</div>
+				<div class="hbox" id="fashion">
+					<img keywords="fashion" src="files/file_4f54aee57ba30.jpg">
+					<img keywords="fashion" src="files/file_4f54ad5cc57e2.jpg">
+					<img keywords="fashion" src="files/file_4f54aa14cebdc.jpg">
+					<img keywords="fashion" src="files/file_4f54adca74020.jpg">
+					<img keywords="fashion" src="files/file_4f54aeb4807dd.jpg">
+					<img keywords="fashion" src="files/file_4f54aeb6a148b.jpg">
+				</div>
+				<div class="hbox" id="film">
+					<img keywords="film" src="files/file_4f54ab1191ae3.jpg">
+					<img keywords="film" src="files/file_4f54a8720acac.jpg">
+					<img keywords="film" src="files/file_4f54a952269cd.jpg">
+				</div>
+				<div class="hbox" id="fire">
+					<img keywords="fire" src="files/file_4f54a4018ffae.jpg">
+				</div>
+				<div class="hbox" id="food">
+					<img keywords="food" src="files/file_4f54a469437f6.jpg">
+					<img keywords="food" src="files/file_4f54aac971a7b.jpg">
+					<img keywords="food" src="files/file_4f54a8ef3202f.jpg">
+					<img keywords="food" src="files/file_4f54a8f58d6f1.jpg">
+					<img keywords="food" src="files/file_4f54a8ee6e770.jpg">
+					<img keywords="food" src="files/file_4f54a47ae5b06.jpg">
+					<img keywords="food" src="files/file_4f54a47e83236.jpg">
+					<img keywords="food" src="files/file_4f54a8fbcea55.jpg">
+					<img keywords="food" src="files/file_4f54a458385e6.jpg">
+					<img keywords="food" src="files/file_4f54a8af61b73.jpg">
+					<img keywords="food" src="files/file_4f54a459d2b63.jpg">
+					<img keywords="food" src="files/file_4f54a8fa990a5.jpg">
+				</div>
+				<div class="hbox" id="graphicdesign">
+					<img keywords="graphicdesign" src="files/file_4f54aa3451e47.jpg">
+					<img keywords="graphicdesign" src="files/file_4f54a9fd5e833.jpg">
+					<img keywords="graphicdesign" src="files/file_4f54afa466f2e.jpg">
+					<img keywords="graphicdesign" src="files/file_4f54afadcfb6d.jpg">
+					<img keywords="graphicdesign" src="files/file_4f54aa0194a39.jpg">
+					<img keywords="graphicdesign" src="files/file_4f54ac1603838.jpg">
+					<img keywords="graphicdesign" src="files/file_4f54aa122dc1b.jpg">
+					<img keywords="graphicdesign" src="files/file_4f54aa3cec925.jpg">
+					<img keywords="graphicdesign" src="files/file_4f54aa174ec47.jpg">
+				</div>
+				<div class="hbox" id="industrial">
+					<img keywords="industrial" src="files/file_4f54aefbf3507.jpg">
+					<img keywords="industrial" src="files/file_4f54a2661c1e5.jpg">
+					<img keywords="industrial" src="files/file_4f54ade6b3461.jpg">
+					<img keywords="industrial" src="files/file_4f54a513bd766.jpg">
+					<img keywords="industrial" src="files/file_4f54a3bf8717e.jpg">
+				</div>
+				<div class="hbox" id="logo">
+					<img keywords="logo" src="files/file_4f54a1580e973.jpg">
+					<img keywords="logo" src="files/6_4f54a4bd2fe5e.jpg">
+					<img keywords="logo" src="files/14_4f54a6b18b84b.jpg">
+					<img keywords="logo" src="files/file_4f54ad94b4949.jpg">
+					<img keywords="logo" src="files/file_4f549ee2a3eac.jpg">
+					<img keywords="logo" src="files/6_4f54af1dab0e7.jpg">
+					<img keywords="logo" src="files/file_4f54a2cb80953.jpg">	
+					<img keywords="logo" src="files/file_4f54ab9ed362d.jpg">
+					<img keywords="logo" src="files/file_4f54a2a365f77.jpg">
+					<img keywords="logo" src="files/file_4f54a431433ae.jpg">
+					<img keywords="logo" src="files/file_4f54a647eb685.jpg">
+					<img keywords="logo" src="files/6_4f54a649ae215.jpg">
+				</div>
+				<div class="hbox" id="music"><img keywords="music" src="files/file_4f54aad172f66.jpg">
+					<img keywords="music" src="files/file_4f54a30077d5c.jpg">
+					<img keywords="music" src="files/file_4f54a645c34a8.jpg">
+					<img keywords="music" src="files/file_4f54ac380feed.jpg">
+					<img keywords="music" src="files/file_4f54a0c8f3734.jpg">
+					<img keywords="music" src="files/file_4f54ac1dc0755.jpg">
+					<img keywords="music" src="files/file_4f54a1322518d.jpg">
+					<img keywords="music" src="files/file_4f54a2cd3bfb0.jpg">
+					<img keywords="music" src="files/file_4f54a2caa04e8.jpg">
+					<img keywords="music" src="files/file_4f54a2c968bcc.jpg">
+					<img keywords="music" src="files/file_4f54a2c75da26.jpg">
+					<img keywords="music" src="files/file_4f54a5a3eedbd.jpg">
+					<img keywords="music" src="files/file_4f54a12b90e1d.jpg">
+					<img keywords="music" src="files/file_4f549ebf522c5.jpg">
+					<img keywords="music" src="files/file_4f54a1296c008.jpg">
+					<img keywords="music" src="files/file_4f54abe94167a.jpg">
+					<img keywords="music" src="files/file_4f54a2c60bc3c.jpg">
+					<img keywords="music" src="files/file_4f54ab0fd2f43.jpg">
+					<img keywords="music" src="files/file_4f54a2c0c477b.jpg">
+					<img keywords="music" src="files/file_4f54a47c9893a.jpg">
+					<img keywords="music" src="files/file_4f54a2c238864.jpg">
+					<img keywords="music" src="files/file_4f54a967d492e.jpg">
+					<img keywords="music" src="files/file_4f54aafe9b83d.jpg">
+					<img keywords="music" src="files/file_4f54a2c47b693.jpg">
+					<img keywords="music" src="files/file_4f54a2c85cb42.jpg">
+				</div>
+				<div class="hbox" id="people"><img keywords="people" src="files/file_4f54a2becb237.jpg">
+					<img keywords="people" src="files/file_4f549f177b6ea.jpg">
+					<img keywords="people" src="files/file_4f54a4e545a84.jpg">
+					<img keywords="people" src="files/file_4f54aeb4c81f9.jpg">
+					<img keywords="people" src="files/file_4f54a756b4d9b.jpg">
+					<img keywords="people" src="files/file_4f54aa73eee2b.jpg">
+					<img keywords="people" src="files/file_4f54b3d86557c.jpg">
+					<img keywords="people" src="files/file_4f54aab66cd12.jpg">
+					<img keywords="people" src="files/file_4f54a4d942b3f.jpg">
+					<img keywords="people" src="files/file_4f54a5b57c4ef.jpg">
+					<img keywords="people" src="files/file_4f54aa446e828.jpg">
+					<img keywords="people" src="files/file_4f54a97b2f7f1.jpg">
+					<img keywords="people" src="files/file_4f54a47bcadd6.jpg">
+					<img keywords="people" src="files/file_4f54a5e20187c.jpg">
+					<img keywords="people" src="files/file_4f54a8928c753.jpg">
+					<img keywords="people" src="files/file_4f54a4c8d31e3.jpg">
+					<img keywords="people" src="files/file_4f54a8feafa07.jpg">
+					<img keywords="people" src="files/file_4f54a64487ba2.jpg">
+					<img keywords="people" src="files/file_4f54a906e7148.jpg">
+					<img keywords="people" src="files/file_4f54aac2ccac1.jpg">
+					<img keywords="people" src="files/file_4f54a9141c855.jpg">
+					<img keywords="people" src="files/file_4f54b032826b4.jpg">
+					<img keywords="people" src="files/file_4f54a9aaa6ef9.jpg">
+					<img keywords="people" src="files/file_4f54b02e04b71.jpg">
+					<img keywords="people" src="files/file_4f54a9c2012ba.jpg">
+					<img keywords="people" src="files/file_4f54acaf9630c.jpg">
+					<img keywords="people" src="files/file_4f54a00411fc2.jpg">
+					<img keywords="people" src="files/file_4f54a48b5df90.jpg">
+					<img keywords="people" src="files/file_4f54a42c3023a.jpg">
+					<img keywords="people" src="files/file_4f54a6ace9a44.jpg">
+					<img keywords="people" src="files/file_4f54a3cea6078.jpg">
+					<img keywords="people" src="files/file_4f54afbb0b589.jpg">
+					<img keywords="people" src="files/file_4f54a004e4204.jpg">
+					<img keywords="people" src="files/file_4f54ac19b5acc.jpg">
+					<img keywords="people" src="files/14_4f54a39515e40.jpg">
+					<img keywords="people" src="files/file_4f54a2827bd03.jpg">
+					<img keywords="people" src="files/file_4f54aa1df0bdc.jpg">
+					<img keywords="people" src="files/file_4f54a96417aa9.jpg">
+					<img keywords="people" src="files/14_4f54a0577156e.jpg">
+					<img keywords="people" src="files/file_4f54a23b9b1ca.jpg">
+					<img keywords="people" src="files/file_4f54aa0f98e60.jpg">
+					<img keywords="people" src="files/file_4f54af9f67527.jpg">
+					<img keywords="people" src="files/file_4f54a30dcf69c.jpg">
+					<img keywords="people" src="files/file_4f54a2133fa58.jpg">
+					<img keywords="people" src="files/file_4f54aa3e9b61a.jpg">
+					<img keywords="people" src="files/file_4f54a211943c2.jpg">
+					<img keywords="people" src="files/file_4f54aa10ebdca.jpg">
+					<img keywords="people" src="files/file_4f54ad160f73e.jpg">
+					<img keywords="people" src="files/file_4f54a235177a3.jpg">
+					<img keywords="people" src="files/file_4f54a8f1570dc.jpg">
+					<img keywords="people" src="files/file_4f54a2382d941.jpg">
+					<img keywords="people" src="files/file_4f54abf798c0a.jpg">
+					<img keywords="people" src="files/file_4f54ab882a928.jpg">
+					<img keywords="people" src="files/file_4f54abbd6fde2.jpg">
+					<img keywords="people" src="files/file_4f54a23fd6ad5.jpg">
+					<img keywords="people" src="files/file_4f54ab59c4773.jpg">
+					<img keywords="people" src="files/file_4f549ef61ccdf.jpg">
+					<img keywords="people" src="files/file_4f54a311b6353.jpg">
+				</div>
+				<div class="hbox" id="places">
+					<img keywords="places" src="files/file_4f54b010d05fc.jpg">
+					<img keywords="places" src="files/file_4f54abfc8944a.jpg">
+					<img keywords="places" src="files/file_4f54aa3ff03c1.jpg">
+					<img keywords="places" src="files/file_4f54ad6788d30.jpg">
+					<img keywords="places" src="files/file_4f54ad692f2e7.jpg">
+					<img keywords="places" src="files/file_4f54acf54c5b1.jpg">
+					<img keywords="places" src="files/file_4f54b001758e5.jpg">
+				</div>
+				<div class="hbox" id="politics">
+					<img keywords="politics" src="files/file_4f54a6a5a2fc1.jpg">
+					<img keywords="politics" src="files/file_4f54a9ca9d3c0.jpg">
+					<img keywords="politics" src="files/file_4f54a60f98356.jpg">
+					<img keywords="politics" src="files/file_4f54a9c51e0c3.jpg">
+					<img keywords="politics" src="files/file_4f54a60e03b29.jpg">
+					<img keywords="politics" src="files/file_4f54ac17a3262.jpg">
+					<img keywords="politics" src="files/file_4f54a3e24e0da.jpg">
+					<img keywords="politics" src="files/file_4f54a8bcd40be.jpg">
+					<img keywords="politics" src="files/file_4f54acceb59ee.jpg">
+					<img keywords="politics" src="files/file_4f54aa1ccc9cb.jpg">
+					<img keywords="politics" src="files/file_4f54b03696d00.jpg">
+				</div>
+				<div class="hbox" id="product">
+					<img keywords="product" src="files/file_4f54a35ead165.jpg">
+					<img keywords="product" src="files/file_4f54ad90679c9.jpg">
+					<img keywords="product" src="files/file_4f54adbf7cd13.jpg">
+					<img keywords="product" src="files/file_4f54ae0704bea.jpg">
+					<img keywords="product" src="files/file_4f54a512d0328.jpg">
+					<img keywords="product" src="files/file_4f54aba1c6a26.jpg">
+					<img keywords="product" src="files/file_4f54ade18dd68.jpg">
+					<img keywords="product" src="files/file_4f54ade74209c.jpg">
+					<img keywords="product" src="files/file_4f54aa3eec34f.jpg">
+					<img keywords="product" src="files/14_4f54aee51b3f7.jpg">
+					<img keywords="product" src="files/file_4f54aa133b4e6.jpg">
+					<img keywords="product" src="files/file_4f54ae3ed55c5.jpg">
+					<img keywords="product" src="files/file_4f54aa0820df1.jpg">
+					<img keywords="product" src="files/file_4f54b010a234c.jpg">
+					<img keywords="product" src="files/file_4f54acf48d8f5.jpg">
+					<img keywords="product" src="files/file_4f54b013777da.jpg">
+					<img keywords="product" src="files/file_4f54a30fc9412.jpg">
+					<img keywords="product" src="files/file_4f54acc7c91e2.jpg">
+					<img keywords="product" src="files/14_4f54abac6035a.jpg">
+					<img keywords="product" src="files/file_4f54a8f9948eb.jpg">
+					<img keywords="product" src="files/file_4f54ade0dee7c.jpg">
+				</div>
+				<div class="hbox" id="skeleton">
+					<img keywords="skeleton" src="files/file_4f54a33a0a88a.jpg">
+					<img keywords="skeleton" src="files/file_4f54a2340a8ea.jpg">
+				</div>
+				<div class="hbox" id="superhero">
+					<img keywords="superhero" src="files/file_4f54ace521669.jpg">
+					<img keywords="superhero" src="files/file_4f54a2ed62a96.jpg">
+				</div>
+				<div class="hbox" id="thought">
+					<img keywords="thought" src="files/file_4f54aeb87d88d.jpg">
+					<img keywords="thought" src="files/file_4f54a53c5d80d.jpg">
+					<img keywords="thought" src="files/file_4f54aeba5f1f1.jpg">
+					<img keywords="thought" src="files/file_4f54aa092068d.jpg">
+					<img keywords="thought" src="files/file_4f54abade5c82.jpg">
+					<img keywords="thought" src="files/file_4f54aa19bb6ea.jpg">
+					<img keywords="thought" src="files/file_4f54abe205fd7.jpg">
+					<img keywords="thought" src="files/file_4f54acf3833d1.jpg">
+					<img keywords="thought" src="files/file_4f54aa0bc5ef2.jpg">
+					<img keywords="thought" src="files/file_4f54a876119ea.jpg">
+					<img keywords="thought" src="files/file_4f54a55c04b06.jpg">
+				</div>
+				<div class="hbox" id="travel">
+					<img keywords="travel" src="files/file_4f54a1f1904bc.jpg">
+					<img keywords="travel" src="files/file_4f54a970435ad.jpg">
+					<img keywords="travel" src="files/file_4f54a16dc06a1.jpg">
+					<img keywords="travel" src="files/file_4f54a051a0e85.jpg">
+					<img keywords="travel" src="files/file_4f54ae90d34fc.jpg">
+					<img keywords="travel" src="files/file_4f54af809d144.jpg">
+					<img keywords="travel" src="files/file_4f54a5427919f.jpg">
+					<img keywords="travel" src="files/file_4f54aef1a5982.jpg">
+					<img keywords="travel" src="files/file_4f54a5db750b5.jpg">
+					<img keywords="travel" src="files/file_4f54a9208444e.jpg">
+					<img keywords="travel" src="files/file_4f54a000890e4.jpg">
+					<img keywords="travel" src="files/file_4f54a9fc5a299.jpg">
+					<img keywords="travel" src="files/file_4f54a1ac94750.jpg">
+					<img keywords="travel" src="files/file_4f54a002eacaa.jpg">
+					<img keywords="travel" src="files/file_4f54b001f10f6.jpg">
+					<img keywords="travel" src="files/file_4f54a98df2597.jpg">
+					<img keywords="travel" src="files/file_4f54a2e2dcd13.jpg">
+					<img keywords="travel" src="files/file_4f54a65799f92.jpg">
+					<img keywords="travel" src="files/file_4f54ac81045d5.jpg">
+					<img keywords="travel" src="files/file_4f54a64e5622d.jpg">
+					<img keywords="travel" src="files/file_4f54a23487ddd.jpg">
+					<img keywords="travel" src="files/file_4f54aa2fc09aa.jpg">
+					<img keywords="travel" src="files/file_4f54a52f44ec4.jpg">
+					<img keywords="travel" src="files/file_4f54ae2b4cbd2.jpg">
+					<img keywords="travel" src="files/file_4f54aa0ac51de.jpg">
+					<img keywords="travel" src="files/file_4f54ad48d4b50.jpg">
+				</div>
+				<div class="hbox" id="tv">
+					<img keywords="tv" src="files/file_4f54a974513c3.jpg">
+					<img keywords="tv" src="files/file_4f54a5cda5623.jpg">
+					<img keywords="tv" src="files/file_4f54acb4c12e0.jpg">
+				</div>
+				<div class="hbox" id="typography">
+					<img keywords="typography" src="files/file_4f54aa10be920.jpg">
+					<img keywords="typography" src="files/file_4f54aa16121fd.jpg">
+					<img keywords="typography" src="files/file_4f549e9f0b3b2.jpg">
+					<img keywords="typography" src="files/file_4f54b3efa25db.jpg">
+					<img keywords="typography" src="files/file_4f54ac2459b66.jpg">
+					<img keywords="typography" src="files/file_4f54ab2b0156f.jpg">
+					<img keywords="typography" src="files/14_4f549efe57e7d.jpg">
+					<img keywords="typography" src="files/file_4f54a4787b903.jpg">
+					<img keywords="typography" src="files/file_4f54aa0c74f99.jpg">
+					<img keywords="typography" src="files/file_4f54aa4630eaa.jpg">
+					<img keywords="typography" src="files/file_4f54a21945d8e.jpg">
+					<img keywords="typography" src="files/file_4f54a47f2d64a.jpg">
+					<img keywords="typography" src="files/file_4f54b080e5cd8.jpg">
+					<img keywords="typography" src="files/file_4f54aa3daa6a8.jpg">
+				</div>
+			</div>
+		</div>
+	</div>
+<div id="lucky">I'm feeling lucky!</div>
+
+</body>
